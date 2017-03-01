@@ -16,6 +16,8 @@
 		4827730F1E653E7600A82DFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4827730D1E653E7600A82DFB /* LaunchScreen.storyboard */; };
 		482773191E653EBD00A82DFB /* LYSTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 482773181E653EBD00A82DFB /* LYSTagView.m */; };
 		4827731C1E65779000A82DFB /* MyTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4827731B1E65779000A82DFB /* MyTagCell.m */; };
+		482773201E6675BA00A82DFB /* ChargeSumTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4827731F1E6675BA00A82DFB /* ChargeSumTagCell.m */; };
+		482773231E667B1000A82DFB /* MenuTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 482773221E667B1000A82DFB /* MenuTagCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,10 @@
 		482773181E653EBD00A82DFB /* LYSTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSTagView.m; sourceTree = "<group>"; };
 		4827731A1E65779000A82DFB /* MyTagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTagCell.h; sourceTree = "<group>"; };
 		4827731B1E65779000A82DFB /* MyTagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTagCell.m; sourceTree = "<group>"; };
+		4827731E1E6675BA00A82DFB /* ChargeSumTagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargeSumTagCell.h; sourceTree = "<group>"; };
+		4827731F1E6675BA00A82DFB /* ChargeSumTagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargeSumTagCell.m; sourceTree = "<group>"; };
+		482773211E667B1000A82DFB /* MenuTagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTagCell.h; sourceTree = "<group>"; };
+		482773221E667B1000A82DFB /* MenuTagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTagCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +104,10 @@
 				482773181E653EBD00A82DFB /* LYSTagView.m */,
 				4827731A1E65779000A82DFB /* MyTagCell.h */,
 				4827731B1E65779000A82DFB /* MyTagCell.m */,
+				4827731E1E6675BA00A82DFB /* ChargeSumTagCell.h */,
+				4827731F1E6675BA00A82DFB /* ChargeSumTagCell.m */,
+				482773211E667B1000A82DFB /* MenuTagCell.h */,
+				482773221E667B1000A82DFB /* MenuTagCell.m */,
 			);
 			path = LYSTagView;
 			sourceTree = "<group>";
@@ -173,10 +183,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				482773011E653E7600A82DFB /* AppDelegate.m in Sources */,
+				482773231E667B1000A82DFB /* MenuTagCell.m in Sources */,
 				482773041E653E7600A82DFB /* MasterViewController.m in Sources */,
 				482772FE1E653E7600A82DFB /* main.m in Sources */,
 				482773191E653EBD00A82DFB /* LYSTagView.m in Sources */,
 				4827731C1E65779000A82DFB /* MyTagCell.m in Sources */,
+				482773201E6675BA00A82DFB /* ChargeSumTagCell.m in Sources */,
 				482773071E653E7600A82DFB /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,6 +340,7 @@
 				482773151E653E7600A82DFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

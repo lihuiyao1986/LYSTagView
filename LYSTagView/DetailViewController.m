@@ -9,8 +9,12 @@
 #import "DetailViewController.h"
 #import "LYSTagView.h"
 #import "MyTagCell.h"
+#import "ChargeSumTagCell.h"
 
-@interface DetailViewController ()<LYSTagViewDelegate>
+@interface DetailViewController ()<LYSTagViewDelegate>{
+    LYSTagView * tagView;
+    LYSTagView * sumTagView;
+}
 
 @end
 
@@ -29,11 +33,11 @@
 
 - (void)configureView {
     // Update the user interface for the detail item.
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
-    }
+//    if (self.detailItem) {
+//        self.detailDescriptionLabel.text = [self.detailItem description];
+//    }
     
-    LYSTagView * tagView = [[LYSTagView alloc]initWithFrame:CGRectMake(0, 120, CGRectGetWidth(self.view.frame), 20)];
+    tagView = [[LYSTagView alloc]initWithFrame:CGRectMake(0, 120, CGRectGetWidth(self.view.frame), 20)];
     NSMutableArray *data = [NSMutableArray array];
     [data addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"name":@"李焱生"}]];
     [data addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"name":@"liyansheng"}]];
@@ -48,6 +52,23 @@
     tagView.delegate = self;
     [self.view addSubview:tagView];
     
+    
+    //
+    sumTagView = [[LYSTagView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(tagView.frame), CGRectGetWidth(self.view.frame), 20)];
+    NSMutableArray *data1 = [NSMutableArray array];
+    [data1 addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"sumValue":@"100"}]];
+    [data1 addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"sumValue":@"200"}]];
+    [data1 addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"sumValue":@"300"}]];
+    [data1 addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"sumValue":@"400"}]];
+    [data1 addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"sumValue":@"500"}]];
+    [data1 addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"sumValue":@"600"}]];
+    sumTagView.items = data1;
+    sumTagView.column = 3;
+    sumTagView.itemH = 60.f;
+    sumTagView.cellClass = [ChargeSumTagCell class];
+    sumTagView.delegate = self;
+    [self.view addSubview:sumTagView];
+    
 }
 
 -(void)tagView:(LYSTagView*)tagView procellCell:(UICollectionViewCell*)cell withItem:(NSDictionary*)item{
@@ -61,6 +82,8 @@
 //    cell.backgroundColor = [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1];
     if ([cell isKindOfClass:[MyTagCell class]]) {
         ((MyTagCell*)cell).item = item;
+    }else if([cell isKindOfClass:[ChargeSumTagCell class]]){
+        ((ChargeSumTagCell*)cell).item = item;
     }
 }
 
