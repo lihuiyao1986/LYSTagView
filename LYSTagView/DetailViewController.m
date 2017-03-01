@@ -10,10 +10,12 @@
 #import "LYSTagView.h"
 #import "MyTagCell.h"
 #import "ChargeSumTagCell.h"
+#import "MenuTagCell.h"
 
 @interface DetailViewController ()<LYSTagViewDelegate>{
     LYSTagView * tagView;
     LYSTagView * sumTagView;
+    LYSTagView * menuTagView;
 }
 
 @end
@@ -54,7 +56,7 @@
     
     
     //
-    sumTagView = [[LYSTagView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(tagView.frame), CGRectGetWidth(self.view.frame), 20)];
+    sumTagView = [[LYSTagView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(tagView.frame) + 20, CGRectGetWidth(self.view.frame), 20)];
     NSMutableArray *data1 = [NSMutableArray array];
     [data1 addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"sumValue":@"100"}]];
     [data1 addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"sumValue":@"200"}]];
@@ -68,6 +70,23 @@
     sumTagView.cellClass = [ChargeSumTagCell class];
     sumTagView.delegate = self;
     [self.view addSubview:sumTagView];
+    
+    
+    menuTagView = [[LYSTagView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(sumTagView.frame) + 20, CGRectGetWidth(self.view.frame), 20)];
+    NSMutableArray *data2 = [NSMutableArray array];
+    [data2 addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"imageUrl":@"menu_bill_charge",@"placeHolderImage":@"",@"title":@"欠费缴纳"}]];
+    [data2 addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"imageUrl":@"menu_consult",@"placeHolderImage":@"",@"title":@"在线咨询"}]];
+    [data2 addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"imageUrl":@"menu_iccard_charge",@"placeHolderImage":@"",@"title":@"IC卡购气"}]];
+    [data2 addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"imageUrl":@"menu_online_service",@"placeHolderImage":@"",@"title":@"在线客服"}]];
+    [data2 addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"imageUrl":@"menu_table_manage",@"placeHolderImage":@"",@"title":@"表具管理"}]];
+    [data2 addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"imageUrl":@"menu_upload_meter",@"placeHolderImage":@"",@"title":@"自报表读数"}]];
+    [data2 addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"imageUrl":@"menu_work_service",@"placeHolderImage":@"",@"title":@"预约服务"}]];
+    menuTagView.items = data2;
+    menuTagView.column = 4;
+    menuTagView.itemH = 80.f;
+    menuTagView.cellClass = [MenuTagCell class];
+    menuTagView.delegate = self;
+    [self.view addSubview:menuTagView];
     
 }
 
@@ -84,6 +103,14 @@
         ((MyTagCell*)cell).item = item;
     }else if([cell isKindOfClass:[ChargeSumTagCell class]]){
         ((ChargeSumTagCell*)cell).item = item;
+    }else if([cell isKindOfClass:[MenuTagCell class]]){
+        ((MenuTagCell*)cell).loadImageBlock = ^(UIImageView *imageView,NSString *imageUrl,NSString *placeHolder){
+            if ([imageUrl length] > 0) {
+                imageView.image = [UIImage imageNamed:imageUrl];
+            }
+        };
+        ((MenuTagCell*)cell).item = item;
+
     }
 }
 

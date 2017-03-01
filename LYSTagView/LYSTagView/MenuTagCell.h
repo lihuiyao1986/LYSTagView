@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^LoadImageBlock)(UIImageView *imageView,NSString *imageUrl,NSString *placeHolderImage);
+
 @interface MenuTagCell : UICollectionViewCell
+
+@property(nonatomic,assign)CGFloat titleH;
+
+@property(nonatomic,strong)NSDictionary *item;
+
+@property(nonatomic,strong)LoadImageBlock loadImageBlock;
 
 @end
