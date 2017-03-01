@@ -38,14 +38,20 @@
     [self.contentView addSubview:self.label];
 }
 
+-(void)setItem:(NSDictionary *)item{
+    _item = item;
+    NSString* selected = [self.item objectForKey:@"selected"];
+    if (selected && [selected isEqualToString:@"1"]) {
+        self.label.backgroundColor = [UIColor redColor];
+    }else{
+        self.label.backgroundColor = [UIColor greenColor];
+    }
+    self.label.text = [self.item objectForKey:@"name"];
+}
+
 -(void)layoutSubviews{
     [super layoutSubviews];
     self.label.frame = CGRectMake(10, 10, self.bounds.size.width -20, self.bounds.size.height - 20);
-}
-
--(void)drawRect:(CGRect)rect{
-    [super drawRect:rect];
-    self.label.text = [self.item objectForKey:@"name"];
 }
 
 @end

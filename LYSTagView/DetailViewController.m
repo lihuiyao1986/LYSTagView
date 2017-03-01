@@ -35,12 +35,12 @@
     
     LYSTagView * tagView = [[LYSTagView alloc]initWithFrame:CGRectMake(0, 120, CGRectGetWidth(self.view.frame), 20)];
     NSMutableArray *data = [NSMutableArray array];
-    [data addObject:@{@"name":@"李焱生"}];
-    [data addObject:@{@"name":@"liyansheng"}];
-    [data addObject:@{@"name":@"王思聪"}];
-    [data addObject:@{@"name":@"郭靖"}];
-    [data addObject:@{@"name":@"郭靖"}];
-    [data addObject:@{@"name":@"郭靖"}];
+    [data addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"name":@"李焱生"}]];
+    [data addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"name":@"liyansheng"}]];
+    [data addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"name":@"王思聪"}]];
+    [data addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"name":@"郭靖"}]];
+    [data addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"name":@"郭靖"}]];
+    [data addObject:[NSMutableDictionary dictionaryWithDictionary:@{@"name":@"郭靖"}]];
     tagView.items = data;
     tagView.column = 4;
     tagView.itemH = 60.f;

@@ -14,7 +14,7 @@
 
 @property(nonatomic,strong)UICollectionView *collectView;
 
-@property(nonatomic,assign)NSUInteger currentIndex;
+@property(nonatomic,strong)NSIndexPath* currentIndex;
 
 @end
 
@@ -106,11 +106,23 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    if(self.currentIndex != indexPath.row){
-        self.currentIndex = indexPath.row;
-        if ([self.delegate respondsToSelector:@selector(tagView:itemSelectedAtIndex:withItem:)]) {
-            [self.delegate tagView:self itemSelectedAtIndex:indexPath.row withItem:[self.items objectAtIndex:indexPath.row]];
+    if(!self.currentIndex){
+        self.currentIndex = indexPath;
+        [[self.items objectAtIndex:indexPath.row] setObject:@"1" forKey:@"selected"];
+        [_collectView reloadData];
+    }else{
+        if (indexPath.row != self.currentIndex.row) {
+            NSIndexPath *lastIndexPath = self.currentIndex;
+            self.currentIndex = indexPath;
+            [[self.items objectAtIndex:lastIndexPath.row] setObject:@"0" forKey:@"selected"];
+            [[self.items objectAtIndex:indexPath.row] setObject:@"1" forKey:@"selected"];
+            [UIView performWithoutAnimation:^{
+                [_collectView reloadItemsAtIndexPaths:@[lastIndexPath,indexPath]];
+            }];
         }
+    }
+    if ([self.delegate respondsToSelector:@selector(tagView:itemSelectedAtIndex:withItem:)]) {
+        [self.delegate tagView:self itemSelectedAtIndex:indexPath.row withItem:[self.items objectAtIndex:indexPath.row]];
     }
 }
 
